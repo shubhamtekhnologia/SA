@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:schedulerapplication/presentation/Screens/Leave_Screen.dart';
 import 'package:schedulerapplication/presentation/Screens/Sign_in_Screen.dart';
 
 class Home_Screen extends StatefulWidget {
@@ -11,15 +12,17 @@ class Home_Screen extends StatefulWidget {
 }
 
 class _Home_ScreenState extends State<Home_Screen> {
-  // int _selectedIndex=0;
+  int _selectedIndex=0;
   int _currentIndex = 0;
   final List<Widget> _screens = [
     Screen1(),
     Screen2(),
-    Screen3(),
+    Leave_Screen(),
     Screen4(),
     Screen5(),
   ];
+  final Color selectedColor = Colors.blue;
+  final Color unselectedColor = Colors.transparent;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +30,7 @@ class _Home_ScreenState extends State<Home_Screen> {
         centerTitle: true,
         title: Text('Welcome',
         style: TextStyle(
-            fontWeight: FontWeight.bold
+
         ),),
         actions: [
           IconButton(
@@ -115,117 +118,43 @@ class _Home_ScreenState extends State<Home_Screen> {
           ],
         ),
       ),
-       body:_screens[_currentIndex],
-    // PageView(
-      //   children: _screens,
-      //   onPageChanged: (index) {
-      //     setState(() {
-      //       _currentIndex = index;
-      //     });
-      //   },
-      //   controller: PageController(
-      //     initialPage: _currentIndex,
-      //   ),
-      // ),
-      // bottomNavigationBar: BottomNavigationBar(
-      //   elevation: 10,
-      //   currentIndex: _selectedIndex,
-      //   onTap: (index) {
-      //
-      //     // Handle item tap
-      //     setState(() {
-      //       _selectedIndex = index;
-      //     });
-      //   },
-      //   items: [
-      //     BottomNavigationBarItem(
-      //       icon: Container(
-      //         decoration: BoxDecoration(
-      //           shape: BoxShape.circle,
-      //           color: _selectedIndex == 0 ? Color(0xff6791FF) : Colors.grey,
-      //         ),
-      //         child: Icon(Icons.home, color: Colors.white),
-      //       ),
-      //       label: 'Home',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Container(
-      //         decoration: BoxDecoration(
-      //           shape: BoxShape.circle,
-      //           color: _selectedIndex == 1 ? Color(0xff6791FF) : Colors.grey,
-      //         ),
-      //         child: Icon(Icons.search, color: Colors.white),
-      //       ),
-      //       label: 'Search',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Container(
-      //         decoration: BoxDecoration(
-      //           shape: BoxShape.circle,
-      //           color: _selectedIndex == 2 ? Color(0xff6791FF) : Colors.grey,
-      //         ),
-      //         child: Icon(Icons.favorite, color: Colors.white),
-      //       ),
-      //       label: 'Favorites',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Container(
-      //         decoration: BoxDecoration(
-      //           shape: BoxShape.circle,
-      //           color: _selectedIndex == 3 ? Color(0xff6791FF) : Colors.grey,
-      //         ),
-      //         child: Icon(Icons.shopping_cart, color: Colors.white),
-      //       ),
-      //       label: 'Cart',
-      //     ),
-      //     BottomNavigationBarItem(
-      //       icon: Container(
-      //         decoration: BoxDecoration(
-      //           shape: BoxShape.circle,
-      //           color: _selectedIndex == 4 ? Color(0xff6791FF) : Colors.grey,
-      //         ),
-      //         child: Icon(Icons.person, color: Colors.white),
-      //       ),
-      //       label: 'Profile',
-      //     ),
-
-
+       body: _screens[_selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         elevation: 10,
-        currentIndex: _currentIndex,
+        currentIndex: _selectedIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index;
+            _selectedIndex = index;
           });
         },
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home,color: Colors.black,),
-            label: 'Screen 1',
+            icon: Icon(Icons.home_outlined,color: Colors.black,),
+            label: 'Home',
             backgroundColor: Color(0xffDFE7FD),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.calendar_month,color: Colors.black,),
-            label: 'Screen 2',
+            label: 'Calender',
             backgroundColor: Color(0xffDFE7FD),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search,color: Colors.black,),
-            label: 'Screen 3',
+            icon: Icon(Icons.logout,color: Colors.black,),
+            label: 'Leave',
             backgroundColor: Color(0xffDFE7FD),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.access_time_filled_rounded,color: Colors.black,),
-            label: 'Screen 4',
+            icon: Icon(Icons.access_time_outlined,color: Colors.black,),
+            label: 'Attendance',
             backgroundColor: Color(0xffDFE7FD),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person,color: Colors.black,),
-            label: 'Screen 5',
+            icon: Icon(Icons.perm_identity,color: Colors.black,),
+            label: 'Profile',
             backgroundColor: Color(0xffDFE7FD),
           ),
         ],
-        selectedItemColor: Colors.black, // Set the selected item color
+        selectedItemColor: Colors.blueAccent, // Set the selected item color
         unselectedItemColor: Colors.grey, // Set the unselected item color
         showSelectedLabels: true,
         showUnselectedLabels: true,
@@ -237,9 +166,11 @@ class _Home_ScreenState extends State<Home_Screen> {
 class Screen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text('Screen 1'),
-    );
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('hi'),
+      ),
+       );
   }
 }
 
@@ -252,14 +183,14 @@ class Screen2 extends StatelessWidget {
   }
 }
 
-class Screen3 extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text('Screen 3'),
-    );
-  }
-}
+// class Screen3 extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Center(
+//       child: Text('Screen 3'),
+//     );
+//   }
+// }
 
 class Screen4 extends StatelessWidget {
   @override
@@ -278,4 +209,5 @@ class Screen5 extends StatelessWidget {
     );
   }
 }
+
 
