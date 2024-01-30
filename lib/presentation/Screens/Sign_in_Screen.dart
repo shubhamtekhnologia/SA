@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:schedulerapplication/presentation/Screens/Home_Screen.dart';
 import 'package:schedulerapplication/presentation/widget/Rounded_button.dart';
 
+import '../../repository/signInApi.dart';
+
 
 
 class Sign_In_Screen extends StatefulWidget {
@@ -14,6 +16,7 @@ class Sign_In_Screen extends StatefulWidget {
 class _Sign_In_ScreenState extends State<Sign_In_Screen> {
 
   bool passwordObsecured = true;
+
   final usernameController = TextEditingController();
 
   final passwordController = TextEditingController();
@@ -28,6 +31,41 @@ class _Sign_In_ScreenState extends State<Sign_In_Screen> {
     return (usernameController.text == username &&
         passwordController.text == password);
   }
+  // final ApiService apiService = ApiService(baseUrl: 'http://192.168.1.42:8000/api/registrations/');
+  // Future<void> signInUser() async {
+  //   setState(() {
+  //     // Clear any previous error message
+  //     errorMessage = '';
+  //   });
+  //
+  //   try {
+  //     final Map<String, dynamic> response = await apiService.loginUser(
+  //       usernameController.text,
+  //       passwordController.text,
+  //     );
+  //
+  //     // Check the response for success or failure
+  //     if (response['success']) {
+  //       // Successful login
+  //       // Extract and use any data you need from the response
+  //       String token = response['token']; // replace 'token' with the actual key in your response
+  //
+  //       // Navigate to the Home Screen or perform other actions as needed
+  //       Navigator.push(
+  //         context,
+  //         MaterialPageRoute(builder: (context) => Home_Screen(token: token)),
+  //       );
+  //     } else {
+  //       setState(() {
+  //         errorMessage = response['message'] ?? 'Invalid credentials. Please try again.';
+  //       });
+  //     }
+  //   } catch (error) {
+  //     setState(() {
+  //       errorMessage = 'An error occurred. Please try again.';
+  //     });
+  //   }
+  // }
 
   // sign user in method
   void signUserIn() {}
@@ -162,6 +200,12 @@ class _Sign_In_ScreenState extends State<Sign_In_Screen> {
                       ),
                       //
                       const SizedBox(height: 10),
+                      // CustomMaterialButton(
+                      //   onPressed: signInUser,
+                      //   buttonText: 'Sign In',
+                      //   buttonColor: Color(0xFF6791FF),
+                      //   textColor: Colors.white,),
+
                       CustomMaterialButton(
                         onPressed: () {
                           setState(() {
@@ -184,41 +228,6 @@ class _Sign_In_ScreenState extends State<Sign_In_Screen> {
                         buttonColor: Color(0xFF6791FF),
                         textColor: Colors.white,
                       ),
-
-
-
-
-                      // Padding(
-                      //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                      //   child: MaterialButton(
-                      //     minWidth: double.infinity,
-                      //     onPressed: () {
-                      //       setState(() {
-                      //         // Clear any previous error message
-                      //         errorMessage = '';
-                      //       });
-                      //       if (performLogin()) {
-                      //         // Successful login
-                      //         Navigator.push(
-                      //           context,
-                      //           MaterialPageRoute(
-                      //               builder: (context) => Home_Screen()),
-                      //         );
-                      //       } else {
-                      //         setState(() {
-                      //           errorMessage =
-                      //           'Invalid credentials. Please try again.';
-                      //         });
-                      //       }
-                      //     },
-                      //     child: Text('Sign in'),
-                      //     color: Color(0xFFAE66F5),
-                      //     textColor: Colors.white,
-                      //     height: 50,
-                      //     shape: RoundedRectangleBorder(
-                      //         borderRadius: BorderRadius.circular(25)),
-                      //   ),
-                      // ),
                        SizedBox(height: 10),
                       Align(
                         alignment: Alignment.center,

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:schedulerapplication/presentation/Screens/Sign_in_Screen.dart';
 
+import '../../repository/signUpApi.dart';
 import '../widget/Rounded_button.dart';
 
 class Sign_Up_Screen extends StatefulWidget {
@@ -147,32 +148,45 @@ class _Sign_Up_ScreenState extends State<Sign_Up_Screen> {
                           ),
                         ),
                         const SizedBox(height: 10),
+                        // CustomMaterialButton(
+                        //   onPressed: () {
+                        //     setState(() {});
+                        //     Navigator.push(
+                        //       context,
+                        //       MaterialPageRoute(builder: (context) => Sign_In_Screen()),
+                        //     );
+                        //   },
+                        //   buttonText: 'Sign Up',
+                        //   buttonColor: Color(0xFF6791FF),
+                        //   textColor: Colors.white,
+                        // ),
                         CustomMaterialButton(
-                          onPressed: () {
-                            setState(() {});
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Sign_In_Screen()),
-                            );
+                          onPressed: () async {
+                            try {
+                              final Map<String, dynamic> responseData = await ApiClient().signUp(
+                                emailController.text,
+                                usernameController.text,
+                                passwordController.text,
+                              );
+
+                              // Handle the response data as needed (e.g., show a success message)
+                              print('Registration successful: $responseData');
+
+                              // Navigate to the login screen or perform other actions
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Sign_In_Screen()),
+                              );
+                            } catch (error) {
+                              // Handle registration error (e.g., show an error message)
+                              print('Error during registration: $error');
+                            }
                           },
                           buttonText: 'Sign Up',
                           buttonColor: Color(0xFF6791FF),
                           textColor: Colors.white,
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                        //   child: MaterialButton(
-                        //     minWidth: double.infinity,
-                        //     onPressed: () {},
-                        //
-                        //     child: Text('Sign Up'),
-                        //     color: Color(0xFFAE66F5),
-                        //     textColor: Colors.white,
-                        //     height: 50,
-                        //     shape: RoundedRectangleBorder(
-                        //         borderRadius: BorderRadius.circular(25)),
-                        //   ),
-                        // ),
+
                         SizedBox(height: 10),
                         Align(
                           alignment: Alignment.center,

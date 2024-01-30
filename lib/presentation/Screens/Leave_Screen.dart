@@ -54,7 +54,11 @@ class _Leave_ScreenState extends State<Leave_Screen> {
                                   child: Column(
                                     children: [
                                       Text('Total Leave'),
-                                      Text('12'),
+                                      Text('12' ,style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                          color: Colors.blueAccent
+                                      ),),
                                     ],
                                   ),
                                 ),
@@ -72,7 +76,11 @@ class _Leave_ScreenState extends State<Leave_Screen> {
                                   child: Column(
                                     children: [
                                       Text('Remaining'),
-                                      Text('02'),
+                                      Text('02', style: TextStyle(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 20,
+                                          color: Colors.blueAccent
+                                      ),),
                                     ],
                                   ),
                                 ),
@@ -90,7 +98,12 @@ class _Leave_ScreenState extends State<Leave_Screen> {
                                   child: Column(
                                     children: [
                                       Text('Applied'),
-                                      Text('10'),
+                                      Text('10',
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 20,
+                                        color: Colors.blueAccent
+                                      ),),
                                     ],
                                   ),
                                 ),
@@ -163,7 +176,7 @@ class _Leave_ScreenState extends State<Leave_Screen> {
                             ),
                           ],
                         ),
-                        SizedBox(height: 20),
+                        SizedBox(height: 10),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -194,7 +207,8 @@ class _Leave_ScreenState extends State<Leave_Screen> {
                             ),
                           ],
                         ),
-          
+                        SizedBox(height: 10),
+
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Text(
@@ -205,11 +219,23 @@ class _Leave_ScreenState extends State<Leave_Screen> {
                             ),
                           ),
                         ),
-                        Expanded(
-                            child:
-                            TextField()
+                        TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Type a note'
                         ),
-          
+                        ),
+                        SizedBox(height: 10),
+
+                        MaterialButton(onPressed: (){},
+                        child: Text('Submit'),
+                          color: Colors.blueAccent,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)
+                          ),
+                          
+                        )
+
+
                       ],
                     ),
                   ),
