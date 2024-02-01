@@ -1,24 +1,29 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 
-class ApiService {
-  final String baseUrl;
+class ApiClientSignIn {
+  static const String baseUrl = 'http://192.168.1.46:3004/login'; // Replace with your actual API endpoint
 
-  ApiService({required this.baseUrl});
-
-  Future<Map<String, dynamic>> loginUser(String username, String password) async {
+  Future<Map<String, dynamic>> signIn(String username, String password) async {
+    final url = Uri.parse('$baseUrl'); // Replace with your registration endpoint
     final response = await http.post(
-      Uri.parse('$baseUrl'), // Replace with your actual login endpoint
+      url,
       headers: {'Content-Type': 'application/json'},
-      body: jsonEncode({'username': username, 'password': password}),
+      body: jsonEncode({
+        'userName': username,
+        'userPassword': password,
+      }),
     );
-
+    // print("test1");
     if (response.statusCode == 200) {
-      // Successful login
-      return json.decode(response.body);
+      // print("test2");
+      // Successful registration, you can handle the response data here
+      final Map<String, dynamic> responseData = jsonDecode(response.body);
+      return responseData;
     } else {
-      // Error during login
-      throw Exception('Failed to login');
+      print('Failed to login user. Status code: ${response.statusCode}');
+      print('Response body: ${response.body}');
+      throw Exception('Failed to login user. Status code: ${response.statusCode}');
     }
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../widget/Horizonatal_card.dart';
+
 class Leave_Screen extends StatefulWidget {
   const Leave_Screen({super.key});
 
@@ -43,72 +45,11 @@ class _Leave_ScreenState extends State<Leave_Screen> {
                       children: [
                         Row(
                           children: [
-                            Expanded(
-                              child: Card(
-                                color: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12)),
-                                elevation: 3,
-                                child: Container(
-                                  padding: EdgeInsets.all(20),
-                                  child: Column(
-                                    children: [
-                                      Text('Total Leave'),
-                                      Text('12' ,style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                          color: Colors.blueAccent
-                                      ),),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                            Horizonatal_Card(title: 'Total Leave', value: '12'),
                             SizedBox(width: 10),
-                            Expanded(
-                              child: Card(
-                                color: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12)),
-                                elevation: 3,
-                                child: Container(
-                                  padding: EdgeInsets.all(20),
-                                  child: Column(
-                                    children: [
-                                      Text('Remaining'),
-                                      Text('02', style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                          color: Colors.blueAccent
-                                      ),),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                            Horizonatal_Card(title: 'Remaining ', value: '02'),
                             SizedBox(width: 10),
-                            Expanded(
-                              child: Card(
-                                color: Colors.white,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(12)),
-                                elevation: 3,
-                                child: Container(
-                                  padding: EdgeInsets.all(20),
-                                  child: Column(
-                                    children: [
-                                      Text('Applied'),
-                                      Text('10',
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 20,
-                                        color: Colors.blueAccent
-                                      ),),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
+                            Horizonatal_Card(title: 'Applied', value: '10'),
                           ],
                         ),
                         SizedBox(height: 20),

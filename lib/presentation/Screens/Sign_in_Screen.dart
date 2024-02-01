@@ -21,16 +21,16 @@ class _Sign_In_ScreenState extends State<Sign_In_Screen> {
 
   final passwordController = TextEditingController();
   String errorMessage = '';
-  bool performLogin() {
-    // Replace this with your actual login validation logic
-    // For demonstration purposes, using a static username and password
-    String username = "shubham";
-    String password = "shubham111";
-
-    // Replace with your actual logic
-    return (usernameController.text == username &&
-        passwordController.text == password);
-  }
+  // bool performLogin() {
+  //   // Replace this with your actual login validation logic
+  //   // For demonstration purposes, using a static username and password
+  //   String username = "shubham";
+  //   String password = "shubham111";
+  //
+  //   // Replace with your actual logic
+  //   return (usernameController.text == username &&
+  //       passwordController.text == password);
+  // }
   // final ApiService apiService = ApiService(baseUrl: 'http://192.168.1.42:8000/api/registrations/');
   // Future<void> signInUser() async {
   //   setState(() {
@@ -206,28 +206,58 @@ class _Sign_In_ScreenState extends State<Sign_In_Screen> {
                       //   buttonColor: Color(0xFF6791FF),
                       //   textColor: Colors.white,),
 
+
                       CustomMaterialButton(
-                        onPressed: () {
-                          setState(() {
-                            // Clear any previous error message
-                            errorMessage = '';
-                          });
-                          if (performLogin()) {
-                            // Successful login
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => Home_Screen()),
+                        onPressed: ()async {
+                          try {
+                            final Map<String, dynamic> responseData = await ApiClientSignIn().signIn(
+                              usernameController.text,
+                              passwordController.text,
+
                             );
-                          } else {
-                            setState(() {
-                              errorMessage = 'Invalid credentials. Please try again.';
-                            });
+
+                            if (responseData['status'] == true) {
+                              // Credentials are valid
+                              print('Login successful: $responseData');
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => Home_Screen()),
+                              );
+                            } else {
+                              // Credentials are invalid
+                              print("Server message: ${responseData['message']}");
+                            }
+                          } catch (error) {
+                            // Handle registration error (e.g., show an error message)
+                            print('Error during login: $error');
                           }
                         },
                         buttonText: 'Sign In',
                         buttonColor: Color(0xFF6791FF),
                         textColor: Colors.white,
                       ),
+                      // CustomMaterialButton(
+                      //   onPressed: () {
+                      //     setState(() {
+                      //       // Clear any previous error message
+                      //       errorMessage = '';
+                      //     });
+                      //     if (performLogin()) {
+                      //       // Successful login
+                      //       Navigator.push(
+                      //         context,
+                      //         MaterialPageRoute(builder: (context) => Home_Screen()),
+                      //       );
+                      //     } else {
+                      //       setState(() {
+                      //         errorMessage = 'Invalid credentials. Please try again.';
+                      //       });
+                      //     }
+                      //   },
+                      //   buttonText: 'Sign In',
+                      //   buttonColor: Color(0xFF6791FF),
+                      //   textColor: Colors.white,
+                      // ),
                        SizedBox(height: 10),
                       Align(
                         alignment: Alignment.center,

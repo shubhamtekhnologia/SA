@@ -14,8 +14,9 @@ class Sign_Up_Screen extends StatefulWidget {
 
 class _Sign_Up_ScreenState extends State<Sign_Up_Screen> {
   bool passwordObsecured = true;
-  final emailController = TextEditingController();
   final usernameController = TextEditingController();
+
+  final useremailController = TextEditingController();
 
   final passwordController = TextEditingController();
   @override
@@ -46,38 +47,7 @@ class _Sign_Up_ScreenState extends State<Sign_Up_Screen> {
                             color: Color(0xFF545454),
                             fontSize: 50,
                           ),
-                        ),
-                        const SizedBox(height: 10),
-                        Align(
-                          alignment: Alignment.centerLeft,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                left: 20.0, top: 8.0, bottom: 8.0),
-                            child: Text(
-                              "Email Address",
-                              style: TextStyle(
-                                // fontWeight: FontWeight.bold,
-                                color: Color(0xff232323),
-                                fontSize: 20,
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        // username textfield
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 22.0),
-                          child: TextField(
-                            controller: emailController,
-                            style: TextStyle(color: Colors.black87),
-                            decoration: InputDecoration(
-                                hintText: "Type Your Email Address",
-                                prefixIcon: Icon(Icons.mail),
-                                border: UnderlineInputBorder()
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 10),
+                        ),const SizedBox(height: 10),
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -107,6 +77,37 @@ class _Sign_Up_ScreenState extends State<Sign_Up_Screen> {
                             ),
                           ),
                         ),
+                        const SizedBox(height: 10),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                left: 20.0, top: 8.0, bottom: 8.0),
+                            child: Text(
+                              "Email Address",
+                              style: TextStyle(
+                                // fontWeight: FontWeight.bold,
+                                color: Color(0xff232323),
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // username textfield
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 22.0),
+                          child: TextField(
+                            controller: useremailController,
+                            style: TextStyle(color: Colors.black87),
+                            decoration: InputDecoration(
+                                hintText: "Type Your Email Address",
+                                prefixIcon: Icon(Icons.mail),
+                                border: UnderlineInputBorder()
+                            ),
+                          ),
+                        ),
+
                         const SizedBox(height: 5),
                         Align(
                           alignment: Alignment.centerLeft,
@@ -164,8 +165,9 @@ class _Sign_Up_ScreenState extends State<Sign_Up_Screen> {
                           onPressed: () async {
                             try {
                               final Map<String, dynamic> responseData = await ApiClient().signUp(
-                                emailController.text,
+
                                 usernameController.text,
+                                useremailController.text,
                                 passwordController.text,
                               );
 

@@ -2,7 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:schedulerapplication/presentation/Screens/Leave_Screen.dart';
+import 'package:schedulerapplication/presentation/Screens/Profile_Screen.dart';
 import 'package:schedulerapplication/presentation/Screens/Sign_in_Screen.dart';
+
+import 'Leave_Screen.dart';
 
 class Home_Screen extends StatefulWidget {
   const Home_Screen({super.key});
@@ -19,7 +22,7 @@ class _Home_ScreenState extends State<Home_Screen> {
     Screen2(),
     Leave_Screen(),
     Screen4(),
-    Screen5(),
+    Profile_Screen(),
   ];
   final Color selectedColor = Colors.blue;
   final Color unselectedColor = Colors.transparent;
@@ -56,28 +59,40 @@ class _Home_ScreenState extends State<Home_Screen> {
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [Color(0xFFDFE7FD), Color(0xFFDFE7FD)],
-                ),
+
+                // gradient: LinearGradient(
+                //   colors: [Color(0xFFDFE7FD), Color(0xFFDFE7FD)],
+                // ),
               ),
-              child: Text(
-                'Drawer Header',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 24,
-                ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundImage: AssetImage(''),
+                    // Replace 'assets/profile_image.jpg' with the path to your image
+                  ),
+                  SizedBox(height: 5),
+                  Text(
+                    'John Doe',
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 24,
+                    ),
+                  ),
+                ],
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home),
+              leading: Icon(Icons.home_outlined),
               title: Text('Home'),
               onTap: () {
                 // Handle item 1 tap
               },
             ),
             ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Profile'),
+              leading: Icon(Icons.edit_note_outlined),
+              title: Text('Edit Profile'),
               onTap: () {
                 // Handle item 2 tap
               },
@@ -90,21 +105,21 @@ class _Home_ScreenState extends State<Home_Screen> {
               },
             ),
             ListTile(
-              leading: Icon(Icons.help),
+              leading: Icon(Icons.add_circle_outline),
+              title: Text('About Us'),
+              onTap: () {
+                // Handle item 2 tap
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.help_outline),
               title: Text('Help'),
               onTap: () {
                 // Handle item 2 tap
               },
             ),
             ListTile(
-              leading: Icon(Icons.add_circle),
-              title: Text('Abput Us'),
-              onTap: () {
-                // Handle item 2 tap
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
+              leading: Icon(Icons.logout_outlined),
               title: Text('Log out'),
               onTap: () {
                 Navigator.push(

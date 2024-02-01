@@ -2,17 +2,20 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class ApiClient {
-  static const String baseUrl = 'http://192.168.1.42:8000/api/registrations/'; // Replace with your actual API endpoint
+  static const String baseUrl = 'http://192.168.1.46:3004/users'; // Replace with your actual API endpoint
 
-  Future<Map<String, dynamic>> signUp(String email, String username, String password) async {
+  Future<Map<String, dynamic>> signUp(String username,String useremail, String password) async {
     final url = Uri.parse('$baseUrl'); // Replace with your registration endpoint
     final response = await http.post(
       url,
       headers: {'Content-Type': 'application/json'},
       body: jsonEncode({
-        'email': email,
-        'username': username,
-        'password': password,
+        'userName': username,
+        'userEmail': useremail,
+        'userPassword': password,
+
+
+
       }),
     );
 
