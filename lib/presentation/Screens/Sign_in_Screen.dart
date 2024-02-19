@@ -31,42 +31,6 @@ class _Sign_In_ScreenState extends State<Sign_In_Screen> {
   //   return (usernameController.text == username &&
   //       passwordController.text == password);
   // }
-  // final ApiService apiService = ApiService(baseUrl: 'http://192.168.1.42:8000/api/registrations/');
-  // Future<void> signInUser() async {
-  //   setState(() {
-  //     // Clear any previous error message
-  //     errorMessage = '';
-  //   });
-  //
-  //   try {
-  //     final Map<String, dynamic> response = await apiService.loginUser(
-  //       usernameController.text,
-  //       passwordController.text,
-  //     );
-  //
-  //     // Check the response for success or failure
-  //     if (response['success']) {
-  //       // Successful login
-  //       // Extract and use any data you need from the response
-  //       String token = response['token']; // replace 'token' with the actual key in your response
-  //
-  //       // Navigate to the Home Screen or perform other actions as needed
-  //       Navigator.push(
-  //         context,
-  //         MaterialPageRoute(builder: (context) => Home_Screen(token: token)),
-  //       );
-  //     } else {
-  //       setState(() {
-  //         errorMessage = response['message'] ?? 'Invalid credentials. Please try again.';
-  //       });
-  //     }
-  //   } catch (error) {
-  //     setState(() {
-  //       errorMessage = 'An error occurred. Please try again.';
-  //     });
-  //   }
-  // }
-
   // sign user in method
   void signUserIn() {}
 
@@ -200,64 +164,38 @@ class _Sign_In_ScreenState extends State<Sign_In_Screen> {
                       ),
                       //
                       const SizedBox(height: 10),
-                      // CustomMaterialButton(
-                      //   onPressed: signInUser,
-                      //   buttonText: 'Sign In',
-                      //   buttonColor: Color(0xFF6791FF),
-                      //   textColor: Colors.white,),
-
-
                       CustomMaterialButton(
-                        onPressed: ()async {
-                          try {
-                            final Map<String, dynamic> responseData = await ApiClientSignIn().signIn(
-                              usernameController.text,
-                              passwordController.text,
-
-                            );
-
-                            if (responseData['status'] == true) {
-                              // Credentials are valid
-                              print('Login successful: $responseData');
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(builder: (context) => Home_Screen()),
-                              );
-                            } else {
-                              // Credentials are invalid
-                              print("Server message: ${responseData['message']}");
-                            }
-                          } catch (error) {
-                            // Handle registration error (e.g., show an error message)
-                            print('Error during login: $error');
-                          }
+                        onPressed: ()async { Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Home_Screen()),
+                        );
+                          // try {
+                          //   final Map<String, dynamic> responseData = await ApiClientSignIn().signIn(
+                          //     usernameController.text,
+                          //     passwordController.text,
+                          //
+                          //   );
+                          //
+                          //   if (responseData['status'] == true) {
+                          //     // Credentials are valid
+                          //     print('Login successful: $responseData');
+                          //     Navigator.push(
+                          //       context,
+                          //       MaterialPageRoute(builder: (context) => Home_Screen()),
+                          //     );
+                          //   } else {
+                          //     // Credentials are invalid
+                          //     print("Server message: ${responseData['message']}");
+                          //   }
+                          // } catch (error) {
+                          //   // Handle registration error (e.g., show an error message)
+                          //   print('Error during login: $error');
+                          // }
                         },
                         buttonText: 'Sign In',
                         buttonColor: Color(0xFF6791FF),
                         textColor: Colors.white,
                       ),
-                      // CustomMaterialButton(
-                      //   onPressed: () {
-                      //     setState(() {
-                      //       // Clear any previous error message
-                      //       errorMessage = '';
-                      //     });
-                      //     if (performLogin()) {
-                      //       // Successful login
-                      //       Navigator.push(
-                      //         context,
-                      //         MaterialPageRoute(builder: (context) => Home_Screen()),
-                      //       );
-                      //     } else {
-                      //       setState(() {
-                      //         errorMessage = 'Invalid credentials. Please try again.';
-                      //       });
-                      //     }
-                      //   },
-                      //   buttonText: 'Sign In',
-                      //   buttonColor: Color(0xFF6791FF),
-                      //   textColor: Colors.white,
-                      // ),
                        SizedBox(height: 10),
                       Align(
                         alignment: Alignment.center,

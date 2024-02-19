@@ -91,6 +91,13 @@ class _Home_ScreenState extends State<Home_Screen> {
               },
             ),
             ListTile(
+              leading: Icon(Icons.school_outlined),
+              title: Text('Student Details'),
+              onTap: () {
+                // Handle item 1 tap
+              },
+            ),
+            ListTile(
               leading: Icon(Icons.edit_note_outlined),
               title: Text('Edit Profile'),
               onTap: () {
@@ -182,9 +189,12 @@ class Screen1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('hi'),
-      ),
+     body: Center
+       (
+       child: Text(
+         'Loading....'
+       ),
+     ),
        );
   }
 }

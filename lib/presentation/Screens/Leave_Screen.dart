@@ -12,6 +12,23 @@ class Leave_Screen extends StatefulWidget {
 
 class _Leave_ScreenState extends State<Leave_Screen> {
   String selectedLeaveType = 'Casual Leave'; // Default selected leave type
+  String selectedDayType = 'First Half';
+  DateTime selectedDate = DateTime.now();
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2101),
+    );
+
+    if (picked != null && picked != selectedDate) {
+      setState(() {
+        selectedDate = picked;
+      });
+    }
+  }// Default selected leave type
 
 
   @override
@@ -103,9 +120,14 @@ class _Leave_ScreenState extends State<Leave_Screen> {
                               child: TextField(
                                 decoration: InputDecoration(
                                   hintText: 'Start Date',
-                                  suffixIcon: IconButton(
-                                    icon: Icon(Icons.calendar_today), onPressed: () {  },
-          
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
+                                      _selectDate(context);
+                                    },
+                                    child: IconButton(
+                                      icon: Icon(Icons.calendar_today),
+                                      onPressed: () {},
+                                    ),
                                   ),
                                 ),
                               ),
@@ -113,7 +135,25 @@ class _Leave_ScreenState extends State<Leave_Screen> {
                             SizedBox(width: 10),
                             Expanded(
                               child:
-                                TextField()
+                              DropdownButton<String>(
+                                isExpanded: true,
+                                value: selectedDayType,
+                                items: [
+                                  DropdownMenuItem(
+                                    value: 'First Half',
+                                    child: Text('First Half'),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: 'Second Half',
+                                    child: Text('Second Half'),
+                                  ),
+                                ],
+                                onChanged: (value) {
+                                  setState(() {
+                                    selectedDayType = value!;
+                                  });
+                                },
+                              ),
                             ),
                           ],
                         ),
@@ -134,9 +174,14 @@ class _Leave_ScreenState extends State<Leave_Screen> {
                               child: TextField(
                                 decoration: InputDecoration(
                                   hintText: 'End Date',
-                                  suffixIcon: IconButton(
-                                    icon: Icon(Icons.calendar_today), onPressed: () {  },
-          
+                                  suffixIcon: GestureDetector(
+                                    onTap: () {
+                                      _selectDate(context);
+                                    },
+                                    child: IconButton(
+                                      icon: Icon(Icons.calendar_today),
+                                      onPressed: () {},
+                                    ),
                                   ),
                                 ),
                               ),
@@ -144,7 +189,25 @@ class _Leave_ScreenState extends State<Leave_Screen> {
                             SizedBox(width: 10),
                             Expanded(
                                 child:
-                                TextField()
+                                DropdownButton<String>(
+                                  isExpanded: true,
+                                  value: selectedDayType,
+                                  items: [
+                                    DropdownMenuItem(
+                                      value: 'First Half',
+                                      child: Text('First Half'),
+                                    ),
+                                    DropdownMenuItem(
+                                      value: 'Second Half',
+                                      child: Text('Second Half'),
+                                    ),
+                                  ],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedDayType = value!;
+                                    });
+                                  },
+                                ),
                             ),
                           ],
                         ),

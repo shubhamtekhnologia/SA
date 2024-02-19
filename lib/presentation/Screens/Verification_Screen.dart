@@ -136,37 +136,7 @@ class _Verification_screenState extends State<Verification_screen> {
                       ),
                       //
                       const SizedBox(height: 18),
-                      // if (errorMessage.isNotEmpty)
-                      //   Text(
-                      //     errorMessage,
-                      //     style: TextStyle(
-                      //       color: Colors.red,
-                      //       fontSize: 16,
-                      //     ),
-                      //   ),
-                      //         // forgot password?
-                      // Padding(
-                      //   padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.end,
-                      //     children: [
-                      //       TextButton(
-                      //           onPressed: () {
-                      //             Navigator.pushNamed(context, 'verification');
-                      //           },
-                      //           child: Text(
-                      //             'Forgot Password',
-                      //             style: TextStyle(
-                      //               // decoration: TextDecoration.underline,
-                      //               color: Color(0xff4c505b),
-                      //               fontSize: 18,
-                      //             ),
-                      //           )),
-                      //     ],
-                      //   ),
-                      // ),
-                      //
-                      // const SizedBox(height: 10),
+
 
                       // sign in button
                       CustomMaterialButton(
